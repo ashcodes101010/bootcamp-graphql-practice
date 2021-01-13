@@ -33,8 +33,8 @@ module.exports = gql`
     numPages: Int
     datePublished: Date!
     bestseller: Boolean! 
-    author: Author!
-    publisher: Publisher!
+    authorId: ID!
+    publisherId: ID!
   }
   type Author {
     id: ID!
