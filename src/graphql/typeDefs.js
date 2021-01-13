@@ -4,41 +4,35 @@ module.exports = gql`
   type Query {
     welcome: String!
     authors: [Author!]!
-    books: [Book!]!
+    allBooks: [Book!]!
     publishers: [Publisher!]!
     authorById(id: ID!): Author!
     bookById(id: ID!): Book!
+    searchAuthors(input: String!): [Author!]!
   }
   type Mutation {
-    addAuthor(input: addAuthorInput): Author!
-    addBook(input: addBookInput): Book!
-    addPublisher(input: addPublisherInput): Publisher!
+    addAuthor(input: authorInput!): Author!
+    addBook(input: bookInput!): Book!
   }
-  input addAddressInput {
+  input addressInput {
     street: String!
     city: String!
     state: String!
     zip: String!
   }
-  input addAuthorInput {
+  input authorInput {
     firstName: String!
     lastName: String!
-    age: Int!
-    email: String!
-    address: addAddressInput!
+    age: Int
+    email: String
+    address: addressInput
   }
-  input addPublisherInput {
-    company: String!
-    phoneNumber: String!
-    numBooksPublished: Int!
-    address: addAddressInput!
-  }
-  input addBookInput {
+  input bookInput {
     title: String!
     language: String
     numPages: Int
     datePublished: Date!
-    bestseller: Boolean! 
+    bestseller: Boolean 
     authorId: ID!
     publisherId: ID!
   }
@@ -46,10 +40,11 @@ module.exports = gql`
     id: ID!
     firstName: String!
     lastName: String!
-    age: Int!
-    email: String!
-    address: Address!
+    age: Int
+    email: String
+    address: Address
     books: [Book!]!
+    createdAt: String!
   }
   type Address {
     id: ID!
@@ -57,6 +52,7 @@ module.exports = gql`
     city: String!
     state: String!
     zip: String!
+    createdAt: String!
   }
   type Book {
     id: ID!
@@ -64,9 +60,10 @@ module.exports = gql`
     language: String
     numPages: Int
     datePublished: String!
-    bestseller: Boolean! 
+    bestseller: Boolean 
     author: Author!
     publisher: Publisher!
+    createdAt: String!
   }
   type Publisher {
     id: ID!
@@ -74,6 +71,7 @@ module.exports = gql`
     phoneNumber: String!
     numBooksPublished: Int!
     address: Address!
+    createdAt: String!
   }
   scalar Date
 `

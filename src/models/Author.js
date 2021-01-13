@@ -2,6 +2,7 @@ const { BelongsToOneRelation, HasManyRelation } = require('objection')
 const BaseModel = require('./BaseModel')
 
 class Author extends BaseModel {
+ 
   static get tableName() {
     return 'authors'
   }
