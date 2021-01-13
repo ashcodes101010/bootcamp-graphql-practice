@@ -14,18 +14,24 @@ module.exports = gql`
     addBook(input: addBookInput): Book!
     addPublisher(input: addPublisherInput): Publisher!
   }
+  input addAddressInput {
+    street: String!
+    city: String!
+    state: String!
+    zip: String!
+  }
   input addAuthorInput {
     firstName: String!
     lastName: String!
     age: Int!
     email: String!
-    address: Address!
+    address: addAddressInput!
   }
   input addPublisherInput {
     company: String!
     phoneNumber: String!
     numBooksPublished: Int!
-    address: Address!
+    address: addAddressInput!
   }
   input addBookInput {
     title: String!
@@ -49,8 +55,8 @@ module.exports = gql`
     id: ID!
     street: String!
     city: String!
-    state: String
-    zip: String
+    state: String!
+    zip: String!
   }
   type Book {
     id: ID!
