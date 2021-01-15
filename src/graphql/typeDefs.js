@@ -31,7 +31,7 @@ module.exports = gql`
     title: String!
     language: String
     numPages: Int
-    datePublished: Date!
+    datePublished: Date
     bestseller: Boolean 
     authorId: ID!
     publisherId: ID!
@@ -43,6 +43,7 @@ module.exports = gql`
     age: Int
     email: String
     address: Address
+    numBooksPublished: Int!
     books: [Book!]!
     createdAt: String!
   }
@@ -59,7 +60,7 @@ module.exports = gql`
     title: String!
     language: String
     numPages: Int
-    datePublished: String!
+    datePublished: Date
     bestseller: Boolean 
     author: Author!
     publisher: Publisher!
