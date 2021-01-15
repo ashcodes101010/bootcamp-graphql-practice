@@ -1,7 +1,11 @@
 const Author = require('../../models/Author')
 const Address = require('../../models/Address')
 
-const addAuthor = async (obj, { input }, context) => {
+const addAuthor = async (obj, { input }) => {
+  const email = Author.query().findOne('email', input.email)
+  if (email) {
+    throw new Error('email already belongs to existing author')
+  }
   try {
     const transaction = await Address.transaction(async trx => {
       let addId = null
@@ -25,7 +29,6 @@ const addAuthor = async (obj, { input }, context) => {
     })
     return transaction
   } catch (err) {
-    console.log(err)
     throw new Error('failed to add author')
   }
 }
