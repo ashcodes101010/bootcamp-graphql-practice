@@ -2,7 +2,7 @@ const Author = require('../../models/Author')
 const Book = require('../../models/Book')
 const Publisher = require('../../models/Publisher')
 
-const addBook = async (obj, { input }, context) => {
+const addBook = async (obj, { input }) => {
   try {
     const transaction = await Book.transaction(async trx => {
       const books = await Book.query(trx).insert({

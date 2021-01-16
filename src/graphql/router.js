@@ -26,5 +26,4 @@ const initializeGraphqlRouter = app => {
   return server
 }
 
-
 module.exports = initializeGraphqlRouter

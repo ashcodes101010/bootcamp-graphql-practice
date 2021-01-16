@@ -10,16 +10,38 @@ module.exports = gql`
     bookById(id: ID!): Book!
     searchAuthors(input: String!): [Author!]!
   }
+
   type Mutation {
     addAuthor(input: authorInput!): Author!
     addBook(input: bookInput!): Book!
+    login(email: String!, password: String!): AuthReturn!
+    register(input: RegisterInput!): AuthReturn!
   }
+
+  type User {
+    id: ID!
+    email: String!
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  type AuthReturn {
+    token: String!
+    user: User!
+  }
+
+  input RegisterInput {
+    email: String!
+    password: String!
+  }
+
   input addressInput {
     street: String!
     city: String!
     state: String!
     zip: String!
   }
+
   input authorInput {
     firstName: String!
     lastName: String!
@@ -27,6 +49,7 @@ module.exports = gql`
     email: String
     address: addressInput
   }
+
   input bookInput {
     title: String!
     language: String
@@ -36,6 +59,7 @@ module.exports = gql`
     authorId: ID!
     publisherId: ID!
   }
+
   type Author {
     id: ID!
     firstName: String!
@@ -47,6 +71,7 @@ module.exports = gql`
     books: [Book!]!
     createdAt: String!
   }
+  
   type Address {
     id: ID!
     street: String!
@@ -55,6 +80,7 @@ module.exports = gql`
     zip: String!
     createdAt: String!
   }
+
   type Book {
     id: ID!
     title: String!
@@ -66,6 +92,7 @@ module.exports = gql`
     publisher: Publisher!
     createdAt: String!
   }
+
   type Publisher {
     id: ID!
     company: String!
@@ -74,5 +101,6 @@ module.exports = gql`
     address: Address!
     createdAt: String!
   }
+
   scalar Date
 `

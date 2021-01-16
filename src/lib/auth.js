@@ -27,7 +27,6 @@ const decodeToken = token => {
   }
 }
 
-
 /**
  *
  * @param {string} password - typically the user entered password
@@ -42,7 +41,6 @@ const hashPassword = password => new Promise((resolve, reject) => {
     }
   })
 })
-
 
 /**
  *
@@ -59,7 +57,6 @@ const comparePassword = (password, hashedPassword) => new Promise((resolve, reje
     }
   })
 })
-
 
 module.exports = {
   hashPassword, comparePassword, createToken, decodeToken,
