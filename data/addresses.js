@@ -8,10 +8,10 @@ casual.define('myAddress', () => ({
   zip: casual.zip(5),
 }))
 
-const addresses = []
+const addressesData = []
 
 for (let i = 0; i < 20; ++i) {
-  addresses.push(casual.myAddress)
+  addressesData.push(casual.myAddress)
 }
 
-module.exports = addresses
+module.exports = addressesData
